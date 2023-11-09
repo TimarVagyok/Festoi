@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>FESTŐI - Art Marketplace</title>
+</head>
+<body>
+<header>
+    <div class="logo-container">
+        <img src="/logos/Festoi.png" alt="FESTŐI Logo">
+        <h1 class="brand-name">FESTŐI</h1>
+    </div>
+    <nav>
+        <a href="/festoi/home">Home</a>
+        <a href="/festoi/signup">Sign Up</a>
+        <a href="/festoi/login">Login</a>
+        <a href="#">About Us</a>
+    </nav>
+</header>
+<div class="upload-art-container">
+    <h2>Upload Art</h2>
+    <form id="uploadArtForm">
+        <div class="form-group input-container">
+            <input type="text" id="artType" name="artType" placeholder="Art Type" required/>
+        </div>
+        <div class="form-group input-container">
+            <input type="text" id="artName" name="artName" placeholder="Art Name" required/>
+        </div>
+        <div class="form-group input-container">
+            <input type="number" id="price" name="price" placeholder="Price" step="0.01" min="0" oninput="validity.valid||(value='');" required/>
+        </div>
+        <div class="form-group input-container">
+            <input type="file" id="imageFile" name="imageFile" accept="image/*" class="login-button" required/>
+        </div>
+        <button type="button" id="uploadArtButton" class="login-button">Upload Art</button>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#uploadArtButton').click(function() {
+            const formData = new FormData();
+            formData.append('artType', $('#artType').val());
+            formData.append('artName', $('#artName').val());
+            formData.append('price', $('#price').val());
+            formData.append('imageFile', $('#imageFile')[0].files[0]);
+
+            $.ajax({
+                type: 'POST',
+                url: '/festoi/art/add-art',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    console.log(data); // Handle the response data
+                    alert('Art uploaded successfully');
+                },
+                error: function(err) {
+                    console.error(err);
+                    alert('Error uploading art');
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

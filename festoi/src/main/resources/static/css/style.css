@@ -1,0 +1,194 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Common styles for body and header */
+body, header {
+    background: linear-gradient(to left, #FFC0CB, #00008B);
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.brand-name {
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    text-decoration: none;
+    color: #FFF;
+    margin: 0 20px;
+    font-weight: bold;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 5px 15px;
+    transition: border 0.3s;
+}
+
+nav a:hover {
+    border: 2px dotted #FFF;
+}
+
+/* Common styles for containers */
+.login-container, .signup-container , .upload-art-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+}
+
+/* Common styles for forms */
+.login-container form, .signup-container form, .upload-art-container{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Common styles for input fields */
+.input-container {
+    margin: 10px 0;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #FFF;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #FFF;
+    font-size: 16px;
+}
+
+/* Common styles for buttons */
+.login-button, .signup-button {
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    color: #FFF;
+    padding: 5px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: border 0.3s;
+}
+/* Style placeholder text */
+.input-container input::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Adjust the color to your preference */
+}
+
+
+.login-button:hover, .signup-button:hover {
+    border: 2px solid pink;
+}
+
+/* Styles for specific elements */
+.like-button {
+    font-size: 24px;
+    line-height: 24px;
+    color: red;
+    transition: color 0.3s;
+}
+
+.like-button.active {
+    color: red;
+}
+
+.like-button::before {
+    content: '\2764';
+}
+
+.signup-link {
+    color: #FFF;
+    margin-top: 20px;
+}
+
+.signup-link a {
+    color: pink;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.remember-me input {
+    margin-right: 10px;
+}
+
+/* Paintings container styling */
+.paintings-container {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Individual painting card styling */
+.painting {
+    width: 300px;
+    padding: 20px;
+    margin: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid #FFF;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    text-align: center;
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.painting:hover {
+    transform: scale(1.05);
+}
+
+.painting img {
+    width: 100%;
+    height: auto;
+}
+
+.details {
+    margin-top: 10px;
+}
+
+.details h2 {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.details p {
+    color: #FFF;
+    font-size: 14px;
+    margin: 10px 0;
+}

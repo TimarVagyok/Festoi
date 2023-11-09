@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>FESTŐI - Art Marketplace</title>
+</head>
+<body>
+<header>
+    <div class="logo-container">
+        <img src="/logos/Festoi.png" alt="FESTŐI Logo">
+        <h1 class="brand-name">FESTŐI</h1>
+    </div>
+    <h2>Sign Up Page</h2>
+    <nav>
+        <a href="/festoi/home">Home</a>
+        <a href="/festoi/login">Login</a>
+        <a href="#">About Us</a>
+    </nav>
+</header>
+<div class="signup-container">
+
+    <form id="registrationForm">
+        <div class="input-container">
+            <input type="text" placeholder="First Name" name="firstName" id="firstName" required>
+        </div>
+        <div class="input-container">
+            <input type="text" placeholder="Last Name" name="lastName" id="lastName" required>
+        </div>
+        <div class="input-container">
+            <input type="text"  placeholder="User Name" name="username" id="username" required>
+        </div>
+        <div class="input-container">
+            <input type="password" placeholder="Password" name="password" id="password" required>
+        </div>
+        <div class="input-container">
+            <input type="email" placeholder="Email Address" name="email" id="email" required>
+        </div>
+        <div class="input-container checkbox">
+            <input type="checkbox" id="isArtist" name="isArtist" >
+            <label for="isArtist" style="display: inline">I am an artist</label>
+        </div>
+        <button class="signup-button" type="submit">Sign Up</button>
+    </form>
+
+</div>
+<script>
+    $(document).ready(function() {
+        $('#registrationForm').submit(function(event) {
+            event.preventDefault();
+
+            // Serialize the form data into a JSON object
+            let formData = {
+                firstName: $('#firstName').val(),
+                lastName: $('#lastName').val(),
+                username: $('#username').val(),
+                password: $('#password').val(),
+                email: $('#email').val(),
+                isArtist: $('#isArtist').prop('checked') // This line should correctly pick up the checkbox value
+            };
+
+            // Send the JSON request to the endpoint using Ajax
+            $.ajax({
+                type: 'POST',
+                url: '/festoi/signup/new-user',
+                data: JSON.stringify(formData),
+                contentType: 'application/json',
+                success: function(response) {
+                    // Handle a successful response from the server
+                    console.log('Signup successful:', response);
+                },
+                error: function(error) {
+                    // Handle errors, such as validation failures or server issues
+                    console.error('Signup failed:', error);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
